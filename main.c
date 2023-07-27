@@ -1,6 +1,22 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/27 11:26:24 by nsoares-          #+#    #+#             */
+/*   Updated: 2023/07/27 14:47:20 by nsoares-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int main()
+#include "philo.h"
+
+int main(int ac, char **av)
 {
-    printf("Hello world\n");
+    if (ac == 5 || ac == 6)
+    {
+        if (valid_args(av) == 0)
+            printf("Lets fucking begin!");
+    }
 }
