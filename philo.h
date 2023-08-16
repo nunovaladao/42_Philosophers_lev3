@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:35:30 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/07/27 15:01:58 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/13 23:05:58 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,51 @@
 # include <unistd.h>
 # include <sys/time.h>
 
-//utils
+typedef struct s_input_args {
+    int nb_philos;
+    int time_eat;
+    int time_sleep;
+    int time_die;
+    int nb_time_must_eat;
+    int				all_phi_ate;
+	int				phi_died;
+    long int time;
+    pthread_mutex_t	fork[250];
+	pthread_mutex_t	check;
+	pthread_mutex_t	check_died_full;
+	pthread_mutex_t	check_died;
+	pthread_mutex_t	print;
+    struct s_philo *p;
+}                   t_input_args;
+
+typedef struct s_philo {
+    t_input_args    *args;
+    pthread_t		thread;
+	long int	last_meal;
+	int				philo_id;
+	int				philo_ate;
+	int				left_fork;
+	int				right_fork;
+	int				done_eating;
+}                   t_philo;
+
+
+// utils
 int	ft_isdigit(int c);
 int	ft_atoi(const char *nptr);
-
-// valid args
 int valid_args(char **av);
+void handle_error(void);
 
+// init
+int init_arguments(t_input_args *input_args, char **av);
+void init_philo(t_input_args *input_args);
+long curr_time(void);
+
+// threads
+void init_threads(t_input_args *input_args, t_philo *p);
+
+// actions
+void eat_routine(t_philo *p);
+void sleep_routine(t_input_args *input_args, int nb_philo);
 
 #endif

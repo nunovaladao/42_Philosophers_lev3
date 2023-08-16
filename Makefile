@@ -6,7 +6,7 @@
 #    By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 17:52:53 by nsoares-          #+#    #+#              #
-#    Updated: 2023/07/27 15:10:43 by nsoares-         ###   ########.fr        #
+#    Updated: 2023/08/13 22:39:30 by nsoares-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,11 @@ INCLUDE = philo.h
 
 # _________SOURCES____________
 
-SOURCE_FILES = main.c \
-				src/valid_args.c \
+SOURCE_FILES = philo.c \
 				src/utils.c \
+				src/init.c \
+				src/threads.c \
+				src/actions.c \
 				
 				
 
@@ -38,7 +40,7 @@ NO_COLOR	=	\033[0m
 
 COMPILATION_START	=	echo "\n$(BOLD_YELLOW)Make: $(NO_COLOR)Compilation start...\n"
 
-PHILO_READY  =   echo "\n$(BOLD_YELLOW)philo ready! ✅ \n"
+PHILO_READY  =   echo "\n$(BOLD_YELLOW)Philo ready! ✅ \n"
 
 CLEANED		=	echo "\n$(BOLD_YELLOW)Clean: $(NO_COLOR)Removed all the \".o\" files \n"
 
