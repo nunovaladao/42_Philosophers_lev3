@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:26:24 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/13 22:11:31 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/17 12:21:04 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@ int main(int ac, char **av)
     if ((ac == 5 || ac == 6) && valid_args(av) == 0 && init_arguments(&input_args, av) == 0)
     {
         init_philo(&input_args);
-        printf("Philosophers Program Begin\n");
-        init_threads(&input_args, &p);
+        printf("Philosophers Program Begin\n\n");
+        if (init_threads(&input_args, &p) == 1)
+        {
+            printf("Error in threads!");
+            exit(1);
+        }
     }
     else
         handle_error();
-        
+    free_program(&input_args);
 }

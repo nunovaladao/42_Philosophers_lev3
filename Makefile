@@ -6,7 +6,7 @@
 #    By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 17:52:53 by nsoares-          #+#    #+#              #
-#    Updated: 2023/08/13 22:39:30 by nsoares-         ###   ########.fr        #
+#    Updated: 2023/08/16 17:00:55 by nsoares-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SOURCE_FILES = philo.c \
 				src/init.c \
 				src/threads.c \
 				src/actions.c \
+				src/print_routine.c \
 				
 				
 

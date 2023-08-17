@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 18:34:17 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/14 12:06:26 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/17 12:05:35 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void *philo_routine(void *philo)
         {
             pthread_mutex_unlock(&input_args->check_died);
             eat_routine(p);
-            sleep_routine(input_args, input_args->nb_philos);
-            // thinking
+            sleep_routine(input_args);
+            thinking_routine(input_args);
         }
         else
         {
@@ -39,7 +39,7 @@ void *philo_routine(void *philo)
     return (NULL);
 }
 
-void init_threads(t_input_args *input_args, t_philo *p)
+int init_threads(t_input_args *input_args, t_philo *p)
 {
     int i;
 
@@ -48,7 +48,15 @@ void init_threads(t_input_args *input_args, t_philo *p)
     input_args->time = curr_time();
     while (i < input_args->nb_philos)
     {
-        pthread_create(&p[i].thread, NULL, &philo_routine, &p[i]);
+        if (pthread_create(&p[i].thread, NULL, &philo_routine, &p[i]))
+            return (1);
         i++;
     }
+    i = 0;
+    while (i < input_args->nb_philos)
+    {
+        pthread_join(p[i].thread, NULL);
+        i++;
+    }
+    return (0);
 }

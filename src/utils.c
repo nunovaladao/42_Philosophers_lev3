@@ -6,11 +6,27 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:32:35 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/07/28 21:43:40 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/17 12:13:51 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
+
+void free_program(t_input_args *input_args)
+{
+	int i;
+
+	i = 0;
+	while (i < input_args->nb_philos)
+	{
+		pthread_mutex_destroy(&(input_args->fork[i]));
+		i++;
+	}
+	pthread_mutex_destroy(&(input_args->print));
+	pthread_mutex_destroy(&(input_args->check));
+	pthread_mutex_destroy(&(input_args->check_died));
+	free(input_args->p);
+}
 
 int valid_args(char **av)
 {

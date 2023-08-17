@@ -6,11 +6,16 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 22:22:03 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/13 18:19:13 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/16 17:55:52 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
+
+long diffe_time(int actual_time, int previous_time)
+{
+    return (actual_time - previous_time);
+}
 
 long curr_time(void)
 {
