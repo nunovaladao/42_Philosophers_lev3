@@ -6,57 +6,56 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 18:34:17 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/17 12:05:35 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/17 18:09:02 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-void *philo_routine(void *philo)
+void	*philo_routine(void *philo)
 {
-    t_input_args *input_args;
-    t_philo *p;
+	t_input_args	*input_args;
+	t_philo	*p;
 
-    p = (t_philo *)philo;
-    input_args = p->args;
-    while (1)
-    {
-        pthread_mutex_lock(&input_args->check_died);
-        if (input_args->nb_philos > 1 && input_args->phi_died == 0 
-            && input_args->all_phi_ate == 0 && !p->done_eating)
-        {
-            pthread_mutex_unlock(&input_args->check_died);
-            eat_routine(p);
-            sleep_routine(input_args);
-            thinking_routine(input_args);
-        }
-        else
-        {
-            pthread_mutex_unlock(&input_args->check_died);
-            break ;
-        }
-    }
-    return (NULL);
+	p = (t_philo *)philo;
+	input_args = p->args;
+	while (1)
+	{
+		pthread_mutex_lock(&input_args->check_died);
+		if (input_args->nb_philos > 1 && input_args->phi_died == 0 
+			&& input_args->all_phi_ate == 0 && !p->done_eating)
+		{
+			pthread_mutex_unlock(&input_args->check_died);
+			eat_routine(p);
+			sleep_routine(input_args);
+			thinking_routine(input_args);
+		}
+		else
+		{
+			pthread_mutex_unlock(&input_args->check_died);
+			break ;
+		}
+	}
+	return (NULL);
 }
 
-int init_threads(t_input_args *input_args, t_philo *p)
+void	init_threads(t_input_args *input_args, t_philo *p)
 {
-    int i;
+    int	i;
 
-    i = 0;
-    p = input_args->p;
-    input_args->time = curr_time();
-    while (i < input_args->nb_philos)
-    {
-        if (pthread_create(&p[i].thread, NULL, &philo_routine, &p[i]))
-            return (1);
-        i++;
-    }
-    i = 0;
-    while (i < input_args->nb_philos)
-    {
-        pthread_join(p[i].thread, NULL);
-        i++;
-    }
-    return (0);
+	i = 0;
+	p = input_args->p;
+	input_args->time = curr_time();
+	while (i < input_args->nb_philos)
+	{
+		pthread_create(&p[i].thread, NULL, &philo_routine, &p[i]);
+		i++;
+	}
+	i = 0;
+	while (i < input_args->nb_philos)
+	{
+		pthread_join(p[i].thread, NULL);
+		i++;
+	}
+	//free_program(input_args);
 }

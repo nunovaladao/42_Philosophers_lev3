@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:35:30 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/17 12:21:48 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/17 17:07:13 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_input_args {
     pthread_mutex_t	fork[250];
 	pthread_mutex_t	check;
 	pthread_mutex_t	check_died;
-	pthread_mutex_t	check_died_full;
+	//pthread_mutex_t	check_died_full;
 	pthread_mutex_t	print;
     struct s_philo *p;
 }                   t_input_args;
@@ -56,13 +56,13 @@ void handle_error(void);
 void free_program(t_input_args *input_args);
 
 // init
-int init_arguments(t_input_args *input_args, char **av);
+void init_arguments(t_input_args *input_args, char **av);
 void init_philo(t_input_args *input_args);
 long curr_time(void);
 long diffe_time(int actual_time, int previous_time);
 
 // threads
-int init_threads(t_input_args *input_args, t_philo *p);
+void init_threads(t_input_args *input_args, t_philo *p);
 
 // actions
 void eat_routine(t_philo *p);

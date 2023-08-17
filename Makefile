@@ -6,14 +6,14 @@
 #    By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 17:52:53 by nsoares-          #+#    #+#              #
-#    Updated: 2023/08/16 17:00:55 by nsoares-         ###   ########.fr        #
+#    Updated: 2023/08/17 18:43:53 by nsoares-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-pthread -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -pthread #-fsanitize=thread
 RM = rm -rf
 INCLUDE = philo.h 
 
@@ -69,4 +69,4 @@ fclean: clean
 	@ $(FCLEANED)
 		
 re:	fclean all
-	@ $(RE) 
+	@ $(RE)
