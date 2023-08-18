@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:35:30 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/17 17:07:13 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/18 12:44:03 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_input_args {
     int nb_time_must_eat;
     int				all_phi_ate;
 	int				phi_died;
+    int almost_satisfied;
     long int time;
     pthread_mutex_t	fork[250];
 	pthread_mutex_t	check;
@@ -68,10 +69,13 @@ void init_threads(t_input_args *input_args, t_philo *p);
 void eat_routine(t_philo *p);
 void sleep_routine(t_input_args *input_args);
 void thinking_routine(t_input_args *input_args);
+void dead_check(t_input_args *input_args);
+void eat_check(t_input_args *input_args, int i);
 
 // prints
 void print_eat_routine(t_philo *p, long time);
 void print_sleep_routine(t_input_args *input_args, long time);
 void print_thinking_routine(t_input_args *input_args, long time);
+int print_dead(t_input_args *input_args, int i);
 
 #endif

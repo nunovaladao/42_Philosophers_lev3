@@ -6,7 +6,7 @@
 #    By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 17:52:53 by nsoares-          #+#    #+#              #
-#    Updated: 2023/08/17 18:43:53 by nsoares-         ###   ########.fr        #
+#    Updated: 2023/08/18 14:05:29 by nsoares-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ SOURCE_FILES = philo.c \
 				src/threads.c \
 				src/actions.c \
 				src/print_routine.c \
-				
 				
 
 OBJS_FILES = $(SOURCE_FILES:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:26:24 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/17 18:34:12 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/18 12:21:45 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ int	main(int ac, char **av)
 		init_philo(&input_args);
 		printf("Philosophers Program Begin\n\n");
 		init_threads(&input_args, &p);
+		if (input_args.all_phi_ate == 1)
+			printf("All philos ate! 🤤\n");
 		//free_program(&input_args);
 	}
 	else
 		handle_error();
-    free_program(&input_args);
+    //free_program(&input_args);
 }

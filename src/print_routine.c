@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 22:38:59 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/17 20:00:31 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/18 13:50:10 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,20 @@ void	print_thinking_routine(t_input_args *input_args, long time)
 	pthread_mutex_unlock(&input_args->check);
 }
 
-/* void print_dead(t_input_args *input_args, long time)
+int print_dead(t_input_args *input_args, int i)
 {
-    if (input_args->phi_died == 1)
-        printf("DEAD");
-} */
+	long time;
 
+	time = diffe_time(curr_time(), input_args->time);
+	if (diffe_time(curr_time(), input_args->p[i].last_meal) > input_args->time_die)
+	{
+		pthread_mutex_lock(&input_args->check_died);
+		input_args->phi_died = 1;
+		pthread_mutex_unlock(&input_args->check_died);
+    	if (input_args->phi_died == 1)
+        	printf("Time: %ld | Philo nº %d dead 💀\n", time, input_args->p->philo_id);
+		pthread_mutex_unlock(&input_args->check);
+		return (1);
+	}
+	return (0);
+}

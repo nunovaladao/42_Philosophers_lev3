@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 18:34:17 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/17 18:09:02 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/18 12:35:58 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,12 @@ void	init_threads(t_input_args *input_args, t_philo *p)
 		pthread_create(&p[i].thread, NULL, &philo_routine, &p[i]);
 		i++;
 	}
+	dead_check(input_args);
 	i = 0;
 	while (i < input_args->nb_philos)
 	{
 		pthread_join(p[i].thread, NULL);
 		i++;
 	}
-	//free_program(input_args);
+	free_program(input_args);
 }
