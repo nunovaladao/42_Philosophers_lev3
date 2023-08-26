@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 22:38:59 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/18 13:50:10 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:27:56 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,32 +31,55 @@ void	print_eat_routine(t_philo *p, long time)
 	}
 }
 
-void	print_sleep_routine(t_input_args *input_args, long time)
+void	print_sleep_routine(t_input_args *input_args, long time, int p_id)
 {
 	pthread_mutex_lock(&input_args->check);
 
-	if (input_args->all_phi_ate == 0 && input_args->phi_died == 0)
+	if (!input_args->all_phi_ate)
 	{
 		pthread_mutex_lock(&input_args->check_died);
-		if (input_args->phi_died == 0)
-			printf("Time: %ld | Philo nº %d is sleeping 😴\n", time, input_args->p->philo_id);
-		pthread_mutex_unlock(&input_args->check_died);
+		if (input_args->phi_died)
+		{
+			pthread_mutex_unlock(&input_args->check);
+			pthread_mutex_unlock(&input_args->check_died);
+			return ;
+		}
+		if (!input_args->phi_died)
+		{
+			printf("Time: %ld | Philo nº %d is sleeping 😴\n", time, p_id);
+			pthread_mutex_unlock(&input_args->check_died);
+			pthread_mutex_unlock(&input_args->check);
+			return ;
+		}
 	}
 	pthread_mutex_unlock(&input_args->check);
+	return ;
+	
 }
 
-void	print_thinking_routine(t_input_args *input_args, long time)
+void	print_thinking_routine(t_philo *p , t_input_args *input_args, long time)
 {
 	pthread_mutex_lock(&input_args->check);
 
-	if (input_args->all_phi_ate == 0 && input_args->phi_died == 0)
+	if (input_args->all_phi_ate == 0)
 	{
 		pthread_mutex_lock(&input_args->check_died);
+		if (input_args->phi_died)
+		{
+			pthread_mutex_unlock(&input_args->check);
+			pthread_mutex_unlock(&input_args->check_died);
+			return ;
+		}
 		if (input_args->phi_died == 0)
-			printf("Time: %ld | Philo nº %d is thinking 🤔\n", time, input_args->p->philo_id);
-		pthread_mutex_unlock(&input_args->check_died);
+		{
+			printf("Time: %ld | Philo nº %d is thinking 🤔\n", time, p->philo_id);
+			pthread_mutex_unlock(&input_args->check_died);
+			pthread_mutex_unlock(&input_args->check);
+			return ;
+		}
 	}
 	pthread_mutex_unlock(&input_args->check);
+	return ;
 }
 
 int print_dead(t_input_args *input_args, int i)

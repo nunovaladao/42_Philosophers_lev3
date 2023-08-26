@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 22:07:57 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/18 13:49:33 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:08:21 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,21 @@ void	eat_routine(t_philo *p)
 	pthread_mutex_unlock(&(input_args->fork[r_fork])); // Liberta os garfos
 }
 
-void	sleep_routine(t_input_args *input_args)
+void	sleep_routine(t_input_args *input_args, int p_id)
 {
 	long	time;
 
 	time = diffe_time(curr_time(), input_args->time);
-	print_sleep_routine(input_args, time);
+	print_sleep_routine(input_args, time, p_id);
 	usleep(input_args->time_sleep * 1000);
 }
 
-void	thinking_routine(t_input_args *input_args)
+void	thinking_routine(t_philo *p , t_input_args *input_args)
 {
 	long	time;
 
 	time = diffe_time(curr_time(), input_args->time);
-	print_thinking_routine(input_args, time);
+	print_thinking_routine(p, input_args, time);
 }
 
 void dead_check(t_input_args *input_args)

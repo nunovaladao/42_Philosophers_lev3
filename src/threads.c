@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 18:34:17 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/18 12:35:58 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:16:08 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	*philo_routine(void *philo)
 		{
 			pthread_mutex_unlock(&input_args->check_died);
 			eat_routine(p);
-			sleep_routine(input_args);
-			thinking_routine(input_args);
+			sleep_routine(input_args, p->philo_id);
+			thinking_routine(p, input_args);
 		}
 		else
 		{
@@ -48,15 +48,15 @@ void	init_threads(t_input_args *input_args, t_philo *p)
 	input_args->time = curr_time();
 	while (i < input_args->nb_philos)
 	{
-		pthread_create(&p[i].thread, NULL, &philo_routine, &p[i]);
+		pthread_create(&p[i].thread, NULL, &philo_routine, &p[i]); 
 		i++;
 	}
 	dead_check(input_args);
 	i = 0;
 	while (i < input_args->nb_philos)
 	{
-		pthread_join(p[i].thread, NULL);
+		pthread_join(p[i].thread, NULL); // Aguarda a conclusão de todas as threads dos filósofos antes de encerrar o programa
 		i++;
 	}
-	free_program(input_args);
+	//free_program(input_args);
 }

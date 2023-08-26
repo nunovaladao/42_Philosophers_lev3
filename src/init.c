@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 22:22:03 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/17 17:52:39 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:35:59 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,5 @@ void	init_arguments(t_input_args *input_args, char **av)
     input_args->phi_died = 0;
 	pthread_mutex_init(&input_args->check, NULL);
 	pthread_mutex_init(&input_args->check_died, NULL);
-	//pthread_mutex_init(&input_args->check_died_full, NULL);
 	pthread_mutex_init(&input_args->print, NULL);
 }
