@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:35:30 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/26 15:34:23 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/26 16:10:20 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/time.h>
+
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
+#define BOLD "\033[1m"
+#define SUB "\033[4m"
+#define RESET "\033[0m"
 
 typedef struct s_input_args {
     int nb_philos;

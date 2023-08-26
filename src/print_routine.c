@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 22:38:59 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/26 15:27:56 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/26 16:07:55 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int print_dead(t_input_args *input_args, int i)
 		input_args->phi_died = 1;
 		pthread_mutex_unlock(&input_args->check_died);
     	if (input_args->phi_died == 1)
-        	printf("Time: %ld | Philo nº %d dead 💀\n", time, input_args->p->philo_id);
+        	printf("Time: %ld | " RED BOLD "Philo nº %d dead 💀\n", time, input_args->p->philo_id);
 		pthread_mutex_unlock(&input_args->check);
 		return (1);
 	}
