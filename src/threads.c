@@ -58,5 +58,4 @@ void	init_threads(t_input_args *input_args, t_philo *p)
 		pthread_join(p[i].thread, NULL); // Aguarda a conclusão de todas as threads dos filósofos antes de encerrar o programa
 		i++;
 	}
-	//free_program(input_args);
 }

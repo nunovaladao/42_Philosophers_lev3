@@ -26,15 +26,14 @@ int	main(int ac, char **av)
 	{
         init_arguments(&input_args, av);
 		init_philo(&input_args);
-		printf(GREEN BOLD SUB "\nPhilosophers Program Begin \n\n" RESET);
+		printf(GREEN BOLD SUB "\nPhilosophers Program Begin \n\n" SUB RESET);
 		if (input_args.nb_philos == 1)
 			one_philo();
 		init_threads(&input_args, &p);
 		if (input_args.all_phi_ate == 1)
-			printf(YELLOW BOLD "All philos ate! 🤤\n");
+			printf(YELLOW BOLD "All philos ate! 🤤\n" RESET);
 		free_program(&input_args);
 	}
 	else
 		handle_error();
-    //free_program(&input_args);
 }

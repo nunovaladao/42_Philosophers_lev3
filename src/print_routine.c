@@ -54,7 +54,6 @@ void	print_sleep_routine(t_input_args *input_args, long time, int p_id)
 	}
 	pthread_mutex_unlock(&input_args->check);
 	return ;
-	
 }
 
 void	print_thinking_routine(t_philo *p , t_input_args *input_args, long time)
@@ -93,7 +92,9 @@ int print_dead(t_input_args *input_args, int i)
 		input_args->phi_died = 1;
 		pthread_mutex_unlock(&input_args->check_died);
     	if (input_args->phi_died == 1)
-        	printf("Time: %ld | " RED BOLD "Philo nº %d dead 💀\n", time, input_args->p->philo_id);
+		{
+        	printf("Time: %ld | " RED BOLD "Philo nº %d dead 💀\n" RESET, time, input_args->p->philo_id);
+		}
 		pthread_mutex_unlock(&input_args->check);
 		return (1);
 	}

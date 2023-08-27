@@ -62,6 +62,7 @@ void	init_arguments(t_input_args *input_args, char **av)
 	input_args->nb_time_must_eat = -1;
 	if (av[5])
 		input_args->nb_time_must_eat = ft_atoi(av[5]);
+	input_args->almost_satisfied = 0;
     input_args->all_phi_ate = 0;
     input_args->phi_died = 0;
 	pthread_mutex_init(&input_args->check, NULL);
