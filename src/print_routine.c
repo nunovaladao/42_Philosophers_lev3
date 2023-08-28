@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 22:38:59 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/26 16:07:55 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/28 15:32:29 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	print_eat_routine(t_philo *p, long time)
 	pthread_mutex_lock(&p->args->check_died);
 	if (p->args->phi_died == 0 && p->args->all_phi_ate == 0)
 	{
-		printf("Time: %ld | philo nº %d ", time, p->philo_id);
+		printf("Time: %ld | Philo nº %d ", time, p->philo_id);
 		printf("has taken a fork 🍴\n");
-		printf("Time: %ld | philo nº %d ", time, p->philo_id);
+		printf("Time: %ld | Philo nº %d ", time, p->philo_id);
 		printf("has taken a fork 🍴\n");
-		printf("Time: %ld | philo nº %d is eating 🍜\n", time, p->philo_id);
+		printf("Time: %ld | Philo nº %d is eating 🍜\n", time, p->philo_id);
 		pthread_mutex_unlock(&p->args->check_died);
 	}
 	else

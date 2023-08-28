@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 22:22:03 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/26 15:35:59 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/28 14:22:38 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,19 @@ void	init_philo(t_input_args *input_args)
 		pthread_mutex_init(&input_args->fork[i], NULL);
 		if (input_args->nb_philos > 1 && i != (input_args->nb_philos - 1)) // Se há + que 1 philo e se o atual não é o último
 		{
+			puts("First IF");
 			input_args->p[i].left_fork = i;
+			printf("p: %d l:%d\n", i, input_args->p[i].left_fork);
 			input_args->p[i].right_fork = i + 1;
+			printf("p: %d r:%d\n", i, input_args->p[i].right_fork);
 		}
 		else if (input_args->nb_philos > 1 && i == (input_args->nb_philos - 1)) // Se há + que 1 philo e se o atual é o último
 		{
+			puts("Second IF");
 			input_args->p[i].left_fork = 0;
+			printf("p: %d l:%d\n", i, input_args->p[i].left_fork);
 			input_args->p[i].right_fork = i;
+			printf("p: %d r:%d\n", i, input_args->p[i].right_fork);
 		}
 		input_args->p[i].last_meal = curr_time(); // Obtém o tempo em milissegundos
 		i++;
