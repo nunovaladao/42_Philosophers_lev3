@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:32:35 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/17 12:13:51 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/27 17:16:05 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ int	valid_args(char **av)
 
 void	handle_error(void)
 {
-	printf("\nArgument Error\n\n");
+	printf(BOLD RED SUB "\nArgument Error\n\n" RESET);
 	printf(" - Put only numbers\n");
 	printf(" - The args related to time have to be greater than 60\n");
-	printf(" - The first arg (Nº of Philos) need to be between 0 and 200\n");
+	printf(" - The first arg (Nº of Philos) need to be between 0 and 200\n\n");
 }
 
 int	ft_isdigit(int c)
