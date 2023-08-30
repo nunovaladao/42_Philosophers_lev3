@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 22:07:57 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/30 18:03:31 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/30 22:20:01 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	thinking_routine(t_philo *p, t_input_args *input_args)
 
 	time = diffe_time(curr_time(), input_args->time);
 	print_thinking_routine(p, input_args, time);
+	usleep(500);
 }
 
 void	dead_check(t_input_args *input_args)
