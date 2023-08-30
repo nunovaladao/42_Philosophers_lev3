@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 22:07:57 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/29 20:21:22 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/30 18:03:31 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	eat_routine(t_philo *p)
 {
-	t_input_args *input_args;
-	int l_fork;
-	int r_fork;
-	long time;
+	t_input_args	*input_args;
+	int				l_fork;
+	int				r_fork;
+	long			time;
 
 	input_args = p->args;
 	l_fork = p->left_fork;
@@ -44,7 +44,7 @@ void	sleep_routine(t_input_args *input_args, int p_id)
 	usleep(input_args->time_sleep * 1000);
 }
 
-void	thinking_routine(t_philo *p , t_input_args *input_args)
+void	thinking_routine(t_philo *p, t_input_args *input_args)
 {
 	long	time;
 
@@ -52,9 +52,9 @@ void	thinking_routine(t_philo *p , t_input_args *input_args)
 	print_thinking_routine(p, input_args, time);
 }
 
-void dead_check(t_philo *p, t_input_args *input_args)
+void	dead_check(t_input_args *input_args)
 {
-	int i;
+	int	i;
 
 	while (input_args->all_phi_ate == 0 && input_args->phi_died == 0)
 	{
@@ -62,9 +62,10 @@ void dead_check(t_philo *p, t_input_args *input_args)
 		while (++i < input_args->nb_philos)
 		{
 			pthread_mutex_lock(&input_args->check);
-			if (print_dead(input_args, i, p->philo_id) == 1)
+			if (print_dead(input_args, i) == 1)
 				return ;
-			if (input_args->p[i].philo_ate == input_args->nb_time_must_eat && !input_args->p[i].done_eating)
+			if (input_args->p[i].philo_ate == input_args->nb_time_must_eat 
+				&& !input_args->p[i].done_eating)
 			{
 				input_args->almost_satisfied++;
 				input_args->p[i].done_eating++;

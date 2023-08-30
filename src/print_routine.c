@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 22:38:59 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/30 11:19:06 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/30 18:02:28 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	print_eat_routine(t_philo *p, long time)
 void	print_sleep_routine(t_input_args *input_args, long time, int p_id)
 {
 	pthread_mutex_lock(&input_args->check);
-
 	if (!input_args->all_phi_ate)
 	{
 		pthread_mutex_lock(&input_args->check_died);
@@ -56,10 +55,9 @@ void	print_sleep_routine(t_input_args *input_args, long time, int p_id)
 	return ;
 }
 
-void	print_thinking_routine(t_philo *p , t_input_args *input_args, long time)
+void	print_thinking_routine(t_philo *p, t_input_args *input_args, long time)
 {
 	pthread_mutex_lock(&input_args->check);
-
 	if (input_args->all_phi_ate == 0)
 	{
 		pthread_mutex_lock(&input_args->check_died);
@@ -81,19 +79,23 @@ void	print_thinking_routine(t_philo *p , t_input_args *input_args, long time)
 	return ;
 }
 
-int print_dead(t_input_args *input_args, int i, int p_id)
+int	print_dead(t_input_args *input_args, int i)
 {
-	long time;
+	long	time;
 
 	time = diffe_time(curr_time(), input_args->time);
-	if (diffe_time(curr_time(), input_args->p[i].last_meal) > input_args->time_die)
+	if (diffe_time(curr_time(), input_args->p[i].last_meal)
+		> input_args->time_die)
 	{
+		printf("Time_die: %d\n", input_args->time_die);
+		printf("p[%d] %ld\n", i + 1, diffe_time(curr_time(), input_args->p[i].last_meal));
 		pthread_mutex_lock(&input_args->check_died);
 		input_args->phi_died = 1;
 		pthread_mutex_unlock(&input_args->check_died);
-    	if (input_args->phi_died == 1)
+		if (input_args->phi_died == 1)
 		{
-        	printf("Time: %ld | " RED BOLD "Philo nº %d died 💀\n" RESET, time, p_id);
+			printf("Time: %ld | " RED BOLD "Philo nº %d died 💀\n"
+				RESET, time, i + 1);
 		}
 		pthread_mutex_unlock(&input_args->check);
 		return (1);

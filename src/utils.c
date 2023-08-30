@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:32:35 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/27 17:16:05 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/30 16:41:52 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	free_program(t_input_args *input_args)
 		pthread_mutex_destroy(&(input_args->fork[i]));
 		i++;
 	}
-	pthread_mutex_destroy(&(input_args->print));
 	pthread_mutex_destroy(&(input_args->check));
 	pthread_mutex_destroy(&(input_args->check_died));
 	free(input_args->p);
@@ -30,8 +29,8 @@ void	free_program(t_input_args *input_args)
 
 int	valid_args(char **av)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	if (ft_atoi(av[1]) == 0 || ft_atoi(av[1]) > 200)

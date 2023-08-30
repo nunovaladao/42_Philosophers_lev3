@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-void one_philo()
+void	one_philo(void)
 {
 	printf("Time: 0 | philo nº 1 has taken a fork 🍴\n");
 }
@@ -20,11 +20,11 @@ void one_philo()
 int	main(int ac, char **av)
 {
 	t_input_args	input_args;
-   	t_philo	p;
+	t_philo			p;
 
 	if ((ac == 5 || ac == 6) && valid_args(av) == 0)
 	{
-        init_arguments(&input_args, av);
+		init_arguments(&input_args, av);
 		init_philo(&input_args);
 		printf(GREEN BOLD SUB "\nPhilosophers Program Begin \n\n" SUB RESET);
 		if (input_args.nb_philos == 1)

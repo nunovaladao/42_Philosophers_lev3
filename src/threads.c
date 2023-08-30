@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 18:34:17 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/29 20:20:46 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/30 18:03:35 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*philo_routine(void *philo)
 {
 	t_input_args	*input_args;
-	t_philo	*p;
+	t_philo			*p;
 
 	p = (t_philo *)philo;
 	input_args = p->args;
@@ -41,7 +41,7 @@ void	*philo_routine(void *philo)
 
 void	init_threads(t_input_args *input_args, t_philo *p)
 {
-    int	i;
+	int	i;
 
 	i = 0;
 	p = input_args->p;
@@ -51,11 +51,11 @@ void	init_threads(t_input_args *input_args, t_philo *p)
 		pthread_create(&p[i].thread, NULL, &philo_routine, &p[i]); 
 		i++;
 	}
-	dead_check(p, input_args);
+	dead_check(input_args);
 	i = 0;
 	while (i < input_args->nb_philos)
 	{
-		pthread_join(p[i].thread, NULL); // Aguarda a conclusão de todas as threads dos filósofos antes de encerrar o programa
+		pthread_join(p[i].thread, NULL);
 		i++;
 	}
 }
