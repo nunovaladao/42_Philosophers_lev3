@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 22:07:57 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/26 15:08:21 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/29 20:21:22 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	thinking_routine(t_philo *p , t_input_args *input_args)
 	print_thinking_routine(p, input_args, time);
 }
 
-void dead_check(t_input_args *input_args)
+void dead_check(t_philo *p, t_input_args *input_args)
 {
 	int i;
 
@@ -62,7 +62,7 @@ void dead_check(t_input_args *input_args)
 		while (++i < input_args->nb_philos)
 		{
 			pthread_mutex_lock(&input_args->check);
-			if (print_dead(input_args, i) == 1)
+			if (print_dead(input_args, i, p->philo_id) == 1)
 				return ;
 			if (input_args->p[i].philo_ate == input_args->nb_time_must_eat && !input_args->p[i].done_eating)
 			{

@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:35:30 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/26 16:10:20 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/29 20:22:11 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,12 @@ void init_threads(t_input_args *input_args, t_philo *p);
 void eat_routine(t_philo *p);
 void	sleep_routine(t_input_args *input_args, int philo_id);
 void thinking_routine(t_philo *p, t_input_args *input_args);
-void dead_check(t_input_args *input_args);
+void dead_check(t_philo *p, t_input_args *input_args);
 
 // prints
 void    print_eat_routine(t_philo *p, long time);
 void    print_sleep_routine(t_input_args *input_args, long time, int p_id);
 void    print_thinking_routine(t_philo *p , t_input_args *input_args, long time);
-int print_dead(t_input_args *input_args, int i);
+int print_dead(t_input_args *input_args, int i, int p_id);
 
 #endif
