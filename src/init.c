@@ -21,8 +21,8 @@ long	curr_time(void)
 {
 	struct timeval	time;
 
-	gettimeofday(&time, NULL); // Tempo em microssegundos
-	return ((time.tv_sec * 1000) + (time.tv_usec / 1000)); // Converção para milissegundos
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
 
 void	init_philo(t_input_args *input_args)
@@ -38,17 +38,17 @@ void	init_philo(t_input_args *input_args)
 		input_args->p[i].philo_ate = 0;
 		input_args->p[i].done_eating = 0;
 		pthread_mutex_init(&input_args->fork[i], NULL);
-		if (input_args->nb_philos > 1 && i != (input_args->nb_philos - 1)) // Se há + que 1 philo e se o atual não é o último
+		if (input_args->nb_philos > 1 && i != (input_args->nb_philos - 1))
 		{
 			input_args->p[i].left_fork = i;
 			input_args->p[i].right_fork = i + 1;
 		}
-		else if (input_args->nb_philos > 1 && i == (input_args->nb_philos - 1)) // Se há + que 1 philo e se o atual é o último
+		else if (input_args->nb_philos > 1 && i == (input_args->nb_philos - 1)) 
 		{
 			input_args->p[i].left_fork = 0;
 			input_args->p[i].right_fork = i;
 		}
-		input_args->p[i].last_meal = curr_time(); // Obtém o tempo em milissegundos
+		input_args->p[i].last_meal = curr_time();
 		i++;
 	}
 }

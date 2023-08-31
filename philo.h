@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:35:30 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/30 18:03:44 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/31 16:40:37 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@
 # define RESET "\033[0m"
 
 typedef struct s_input_args {
-	int	nb_philos;
-	int	time_eat;
-	int	time_sleep;
-	int	time_die;
-	int	nb_time_must_eat;
-	int	all_phi_ate;
-	int	phi_died;
-	int	almost_satisfied;
+	int				nb_philos;
+	int				time_eat;
+	int				time_sleep;
+	int				time_die;
+	int				nb_time_must_eat;
+	int				all_phi_ate;
+	int				phi_died;
+	int				almost_satisfied;
 	long int		time;
 	pthread_mutex_t	fork[250];
 	pthread_mutex_t	check;
@@ -45,7 +45,7 @@ typedef struct s_input_args {
 typedef struct s_philo {
 	t_input_args	*args;
 	pthread_t		thread;
-	long int	last_meal;
+	long int		last_meal;
 	int				philo_id;
 	int				philo_ate;
 	int				left_fork;
@@ -54,9 +54,9 @@ typedef struct s_philo {
 }			t_philo;
 
 // utils
-int	ft_isdigit(int c);
-int	ft_atoi(const char *nptr);
-int	valid_args(char **av);
+int		ft_isdigit(int c);
+int		ft_atoi(const char *nptr);
+int		valid_args(char **av);
 void	handle_error(void);
 void	free_program(t_input_args *input_args);
 
@@ -79,6 +79,6 @@ void	dead_check(t_input_args *input_args);
 void	print_eat_routine(t_philo *p, long time);
 void	print_sleep_routine(t_input_args *input_args, long time, int p_id);
 void	print_thinking_routine(t_philo *p, t_input_args *input_args, long time);
-int	print_dead(t_input_args *input_args, int i);
+int		print_dead(t_input_args *input_args, int i);
 
 #endif
