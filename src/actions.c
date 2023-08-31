@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 22:07:57 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/30 22:20:01 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/08/31 16:54:51 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ void	eat_routine(t_philo *p)
 	input_args = p->args;
 	l_fork = p->left_fork;
 	r_fork = p->right_fork;
-	pthread_mutex_lock(&(input_args->fork[l_fork])); // Trava os grafos para ninguém pegar
+	pthread_mutex_lock(&(input_args->fork[l_fork]));
 	pthread_mutex_lock(&(input_args->fork[r_fork]));
 	time = diffe_time(curr_time(), input_args->time);
 	print_eat_routine(p, time);
-	pthread_mutex_lock(&input_args->check); // Bloqueia o mutex check para atualizar os dados compartilhados de forma segura
+	pthread_mutex_lock(&input_args->check);
 	p->philo_ate += 1;
 	p->last_meal = curr_time();
 	pthread_mutex_unlock(&input_args->check);
 	usleep(p->args->time_eat * 1000);
 	pthread_mutex_unlock(&(input_args->fork[l_fork]));
-	pthread_mutex_unlock(&(input_args->fork[r_fork])); // Liberta os garfos
+	pthread_mutex_unlock(&(input_args->fork[r_fork]));
 }
 
 void	sleep_routine(t_input_args *input_args, int p_id)
@@ -50,7 +50,6 @@ void	thinking_routine(t_philo *p, t_input_args *input_args)
 
 	time = diffe_time(curr_time(), input_args->time);
 	print_thinking_routine(p, input_args, time);
-	usleep(500);
 }
 
 void	dead_check(t_input_args *input_args)
