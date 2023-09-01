@@ -6,14 +6,14 @@
 #    By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 17:52:53 by nsoares-          #+#    #+#              #
-#    Updated: 2023/08/26 12:24:49 by nsoares-         ###   ########.fr        #
+#    Updated: 2023/09/01 13:19:53 by nsoares-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -pthread -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -pthread -O2 -fsanitize=thread
 RM = rm -rf
 INCLUDE = philo.h 
 
@@ -24,7 +24,7 @@ SOURCE_FILES = philo.c \
 				src/init.c \
 				src/threads.c \
 				src/actions.c \
-				src/print_routine.c \
+				src/print_routine.c
 				
 
 OBJS_FILES = $(SOURCE_FILES:.c=.o)

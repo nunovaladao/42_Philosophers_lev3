@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 22:38:59 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/31 17:14:09 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/09/01 11:06:18 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,6 @@ int	print_dead(t_input_args *input_args, int i)
 	if (diffe_time(curr_time(), input_args->p[i].last_meal)
 		> input_args->time_die)
 	{
-		printf("Time_die: %d", input_args->time_die);
-		printf("p[%d] %ld", i, diffe_time(curr_time(), input_args->p[i].last_meal));
 		pthread_mutex_lock(&input_args->check_died);
 		input_args->phi_died = 1;
 		pthread_mutex_unlock(&input_args->check_died);
