@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 22:22:03 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/09/11 11:44:03 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/09/11 19:46:34 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	init_philo(t_input_args *input_args)
 			input_args->p[i].left_fork = i;
 			input_args->p[i].right_fork = i + 1;
 		}
-		else if (input_args->nb_philos > 1 && i == (input_args->nb_philos - 1)) 
+		else if (input_args->nb_philos > 1 && i == (input_args->nb_philos - 1))
 		{
 			input_args->p[i].left_fork = 0;
 			input_args->p[i].right_fork = i;

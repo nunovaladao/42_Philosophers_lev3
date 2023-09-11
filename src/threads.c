@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 18:34:17 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/09/11 11:35:53 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/09/11 19:46:23 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*philo_routine(void *philo)
 	while (1)
 	{
 		pthread_mutex_lock(&input_args->check_died);
-		if (input_args->nb_philos > 1 && input_args->phi_died == 0 
+		if (input_args->nb_philos > 1 && input_args->phi_died == 0
 			&& input_args->all_phi_ate == 0 && !p->done_eating)
 		{
 			pthread_mutex_unlock(&input_args->check_died);
@@ -49,7 +49,7 @@ void	init_threads(t_input_args *input_args, t_philo *p)
 	input_args->time = curr_time();
 	while (i < input_args->nb_philos)
 	{
-		pthread_create(&p[i].thread, NULL, &philo_routine, &p[i]); 
+		pthread_create(&p[i].thread, NULL, &philo_routine, &p[i]);
 		i++;
 	}
 	dead_check(input_args);
