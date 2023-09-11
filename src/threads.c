@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 18:34:17 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/08/30 18:03:35 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/09/11 11:35:53 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	*philo_routine(void *philo)
 			eat_routine(p);
 			sleep_routine(input_args, p->philo_id);
 			thinking_routine(p, input_args);
+			usleep(500);
 		}
 		else
 		{

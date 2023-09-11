@@ -6,7 +6,7 @@
 /*   By: nsoares- <nsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 22:07:57 by nsoares-          #+#    #+#             */
-/*   Updated: 2023/09/02 09:20:48 by nsoares-         ###   ########.fr       */
+/*   Updated: 2023/09/11 11:43:33 by nsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	dead_check(t_input_args *input_args)
 			pthread_mutex_lock(&input_args->check);
 			if (print_dead(input_args, i) == 1)
 				return ;
+			pthread_mutex_lock(&input_args->check_died);
 			if (input_args->p[i].philo_ate == input_args->nb_time_must_eat 
 				&& !input_args->p[i].done_eating)
 			{
@@ -72,6 +73,7 @@ void	dead_check(t_input_args *input_args)
 			}
 			if (input_args->almost_satisfied == input_args->nb_philos)
 				input_args->all_phi_ate = 1;
+			pthread_mutex_unlock(&input_args->check_died);
 			pthread_mutex_unlock(&input_args->check);
 		}
 	}
