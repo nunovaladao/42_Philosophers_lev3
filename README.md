@@ -36,7 +36,7 @@ make
 ```
 
 ## Implementation
-In this project, we use the following synchronization mechanisms to ensure safe concurrent execution:
+In this project, I use the following synchronization mechanisms to ensure safe concurrent execution:
 
 **`Threads:`** Each philosopher is implemented as a separate thread, allowing them to run concurrently.
 
